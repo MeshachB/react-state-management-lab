@@ -87,14 +87,19 @@ const [zombieFighters, setZombieFighters] = useState([
 ]);
 
 
-  return (
+ return (
   <>
     <h1>Zombie Fighters</h1>
 
     <ul>
       {zombieFighters.map((fighter) => (
         <li key={fighter.id}>
-          {fighter.name}
+          <img src={fighter.img} alt={fighter.name} width="100" />
+          <h3>{fighter.name}</h3>
+          <p>Price: {fighter.price}</p>
+          <p>Strength: {fighter.strength}</p>
+          <p>Agility: {fighter.agility}</p>
+           <button>Add</button>
         </li>
       ))}
     </ul>
