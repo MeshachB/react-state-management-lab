@@ -3,6 +3,16 @@ import { useState } from "react";
 const App = () => {
 const [team, setTeam] = useState([])
 const [money,setMoney]= useState(100)
+const handleAddFighter = (fighter) => {
+  setTeam([...team, fighter]);
+
+  const updatedFighters = zombieFighters.filter(
+    (f) => f.id !== fighter.id
+  );
+
+  setZombieFighters(updatedFighters);
+};
+
 const [zombieFighters, setZombieFighters] = useState([
   {
     id: 1,
@@ -90,6 +100,7 @@ const [zombieFighters, setZombieFighters] = useState([
  return (
   <>
     <h1>Zombie Fighters</h1>
+    <h2>Money: ${money}</h2>
 
     <ul>
       {zombieFighters.map((fighter) => (
@@ -99,11 +110,13 @@ const [zombieFighters, setZombieFighters] = useState([
           <p>Price: {fighter.price}</p>
           <p>Strength: {fighter.strength}</p>
           <p>Agility: {fighter.agility}</p>
-           <button>Add</button>
+           <button onClick={() => handleAddFighter(fighter)}>
+  Add
+</button>
         </li>
       ))}
     </ul>
   </>
 );
-
+}
 export default App;
